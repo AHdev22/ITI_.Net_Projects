@@ -1,0 +1,29 @@
+@model object
+@using System.Reflection
+
+<div class="p-6">
+    <h2 class="text-xl font-bold mb-4 text-red-600">Confirm Delete @Model.GetType().Name</h2>
+
+    @* Get Id property dynamically *@
+    @{
+        var idProp = Model.GetType().GetProperty("Id");
+        var idValue = idProp?.GetValue(Model);
+    }
+
+    <p>Are you sure you want to delete 
+        <strong>
+            @{
+                // Display first string property as the "name"
+                var displayProp = Model.GetType().GetProperties()
+                    .FirstOrDefault(p => p.PropertyType == typeof(string) && p.Name != "Id");
+                @displayProp?.GetValue(Model)
+            }
+        </strong>?
+    </p>
+
+    <form asp-action="Delete" method="post">
+        <input type="hidden" name="Id" value="@idValue" />
+        <button type="submit" class="btn btn-danger">Delete</button>
+        <a asp-action="Index" class="btn btn-dark">Cancel</a>
+    </form>
+</div>

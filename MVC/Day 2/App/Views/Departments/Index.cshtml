@@ -1,0 +1,32 @@
+@model IEnumerable<UniversitySystem.Models.Department>
+
+@{
+    ViewData["Title"] = "Departments";
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Manager</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var dept in Model)
+        {
+            <tr>
+                <td>@dept.Id</td>
+                <td>@dept.Name</td>
+                <td>@dept.ManagerName</td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@dept.Id" class="btn btn-primary">Details</a>
+                    <a asp-action="Edit" asp-route-id="@dept.Id" class="btn btn-info">Edit</a>
+                    <a asp-action="Delete" asp-route-id="@dept.Id" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<a asp-controller="Department" asp-action="Add" class="btn btn-dark btn-lg mt-3">Add Department</a>
