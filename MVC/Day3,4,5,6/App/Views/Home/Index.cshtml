@@ -1,0 +1,31 @@
+﻿@model UniversitySystem.Models.HomeIndexViewModel
+@{
+    ViewData["Title"] = "Home";
+}
+
+<div class="row">
+    <div class="col-md-4">
+        <div class="card mb-3">
+            <div class="card-body">
+                <h5 class="card-title">Courses</h5>
+                <p class="card-text display-4">@Model.CoursesCount</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card mb-3">
+            <div class="card-body">
+                <h5 class="card-title">Students</h5>
+                <p class="card-text display-4">@Model.StudentsCount</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card mb-3">
+            <div class="card-body">
+                <h5 class="card-title">Departments</h5>
+                <p class="card-text display-4">@Model.DepartmentsCount</p>
+            </div>
+        </div>
+    </div>
+</div>

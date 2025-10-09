@@ -1,0 +1,40 @@
+@model IEnumerable<UniversitySystem.Models.Instructor>
+
+@{
+    ViewData["Title"] = "Instructors";
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Image</th>
+            <th>Address</th>
+            <th>Salary</th>
+            <th>Course #</th>
+            <th>Dept #</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var Instructor in Model)
+        {
+            <tr>
+                <td>@Instructor.Id</td>
+                <td>@Instructor.Name</td>
+                <td>@Instructor.Image</td>
+                <td>@Instructor.Address</td>
+                <td>@Instructor.Salary</td>
+                <td>@Instructor.CrsId</td>
+                <td>@Instructor.DeptId</td>
+                <td>                    
+                    <a asp-action="Details" asp-route-id="@Instructor.Id" class="btn btn-primary">Details</a>
+                    <a asp-action="Edit" asp-route-id="@Instructor.Id" class="btn btn-info">Edit</a>
+                    <a asp-action="Delete" asp-route-id="@Instructor.Id" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a asp-controller="Instructors" asp-action="Add" class="btn btn-dark btn-lg mt-3">Add Instructor</a>
